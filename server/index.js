@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const notes = require("./mockDB");
 const app = express();
 
 const PORT = process.env.PORT || 3001;
@@ -10,7 +11,7 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 // GET reg to /api route
 
 app.get("/api", (req, res) => {
-  res.json({ msg: "Calisiyor mu?" });
+  res.json(notes);
 });
 
 // all other GET reqs

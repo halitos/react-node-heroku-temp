@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import ListItem from "./components/ListItem";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [notes, setNotes] = useState(null);
 
   useEffect(() => {
     fetch("/api")
       .then((data) => data.json())
-      .then((data) => setData(data.msg));
+      .then((data) => setNotes(data));
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>{data ? data : "loading"}</p>
+        <ListItem notes={notes} />
       </header>
     </div>
   );
